@@ -18,7 +18,7 @@
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .form-group--row {
@@ -36,4 +36,8 @@
 .list-actions {
     display: flex;
     align-items: end;
+}
+
+.error-text {
+    color: var(--color-danger);
 }

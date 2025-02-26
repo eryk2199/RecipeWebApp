@@ -3,10 +3,36 @@
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" id="title" class="input--text" formControlName="title"/>
+        @if(title?.invalid && (title?.dirty || title?.touched)) {
+             <div class="error-text">
+                @if(title?.hasError('required')) {
+                    Title is required
+                }
+                @if(title?.hasError('minlength')) {
+                    Title must be at least 3 characters long
+                }
+                @if(title?.hasError('maxlength')) {
+                    Title can't be longer then 100 characters
+                }
+            </div>
+        }
     </div>
     <div class="form-group">
         <label for="instructions">Instructions</label>
         <textarea rows="10" id="instructions" formControlName="instructions" class="input"></textarea>
+        @if(instructions?.invalid && (instructions?.dirty || instructions?.touched)) {
+            <div class="error-text">
+               @if(instructions?.hasError('required')) {
+                   Instructions field is required
+               }
+               @if(instructions?.hasError('minlength')) {
+                   Instructions field must be at least 3 characters long
+               }
+               @if(instructions?.hasError('maxlength')) {
+                   Instructions field can't be longer then 1000 characters
+               }
+           </div>
+       }
     </div>
     <div class="form-group">
         <p class="label">Ingredients</p>
@@ -29,11 +55,27 @@
                         <button type="button" class="btn btn--form btn--danger" (click)="removeIngredient(i)">Delete</button>
                     </div>
                 </li>
+                @if(item.get("name")?.invalid && (item.get("name")?.dirty || item.get("name")?.touched) || item.get("amount")?.invalid) {
+                    <div class="error-text">
+                       @if(item.get("name")?.hasError('required')) {
+                           Name is required
+                       }
+                       @if(item.get("name")?.hasError('minlength')) {
+                           Name must be at least 3 characters long
+                       }
+                       @if(item.get("name")?.hasError('maxlength')) {
+                           Name can't be longer then 50 characters
+                       }
+                       @if(item.get("amount")?.invalid) {
+                           Amount can't be longer then 50 characters
+                       }
+                   </div>
+               }
             }
         </ul>
     </div>
     <div class="form__actions">
         <button type="button" class="btn btn--large btn--danger">Cancel</button>
-        <button type="submit" class="btn btn--large btn--success">Submit</button>
+        <button type="submit" class="btn btn--large btn--success" [disabled]="form.invalid && form.touched">Submit</button>
     </div>
 </form>

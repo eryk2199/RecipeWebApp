@@ -18,6 +18,11 @@ button:hover {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    background-color: rgba(0,0,0,0.2);
+}
+
 ul {
     list-style: none;
     padding: 0;
