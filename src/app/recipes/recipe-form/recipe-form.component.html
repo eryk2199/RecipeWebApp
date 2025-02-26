@@ -1,26 +1,39 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <h1 class="form__title">Add recipe</h1>
+    <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" id="title" formControlName="title"/>
+        <input type="text" id="title" class="input--text" formControlName="title"/>
     </div>
-    <div>
+    <div class="form-group">
         <label for="instructions">Instructions</label>
-        <textarea rows="10" id="instructions" formControlName="instructions"></textarea>
+        <textarea rows="10" id="instructions" formControlName="instructions" class="input"></textarea>
     </div>
-    <div>
-        <h5>Ingredients</h5>
-        <button type="button" (click)="addIngredient()">Add ingredient</button>
+    <div class="form-group">
+        <p class="label">Ingredients</p>
+        <div class="form-group__actions">
+            <button type="button" (click)="addIngredient()" class="btn">Add ingredient</button>
+        </div>
         <ul formArrayName="ingredients">
-            @for(item of ingredients.controls; track i; let i = $index) 
+            @for(item of ingredients.controls; track generateId(); let i = $index) 
             {
-                <li [formGroupName]="i">
-                    <label for="ingredient-{{i}}-name">Name</label>
-                    <input type="text" id="ingredient-{{i}}-name" formControlName="name"/>
-                    <label for="ingredient-{{i}}-amount">Name</label>
-                    <input type="text" id="ingredient-{{i}}-amount" formControlName="amount"/>
+                <li [formGroupName]="i" class="form-group form-group--row">
+                    <div class="form-group">
+                        <label for="ingredient-{{i}}-name">Name</label>
+                        <input type="text" id="ingredient-{{i}}-name" class="input--text" formControlName="name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="ingredient-{{i}}-amount">Amount</label>
+                        <input type="text" id="ingredient-{{i}}-amount" class="input--text" formControlName="amount"/>
+                    </div>
+                    <div class="list-actions">
+                        <button type="button" class="btn btn--form btn--danger" (click)="removeIngredient(i)">Delete</button>
+                    </div>
                 </li>
             }
         </ul>
     </div>
-    <button type="submit">Submit</button>
+    <div class="form__actions">
+        <button type="button" class="btn btn--large btn--danger">Cancel</button>
+        <button type="submit" class="btn btn--large btn--success">Submit</button>
+    </div>
 </form>

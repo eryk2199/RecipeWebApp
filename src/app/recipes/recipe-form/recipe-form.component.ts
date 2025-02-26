@@ -18,6 +18,7 @@ export class RecipeFormComponent {
       })
     ])
   });
+  counter = 0;
 
   constructor() {}
 
@@ -30,6 +31,14 @@ export class RecipeFormComponent {
       name: new FormControl(''),
       amount: new FormControl('')
     }));
+  }
+
+  removeIngredient(index: number) {
+    this.ingredients.removeAt(index);
+  }
+
+  generateId() {
+    return this.counter += 1;
   }
 
   onSubmit() {
