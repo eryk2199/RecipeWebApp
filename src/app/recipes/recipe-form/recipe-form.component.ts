@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } fr
 
 @Component({
   selector: 'recipes-recipe-form',
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule],
   templateUrl: './recipe-form.component.html',
   styleUrl: './recipe-form.component.css'
 })
