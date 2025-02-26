@@ -52,6 +52,12 @@ label {
     font-weight: 500;
 }
 
+.link {
+    margin: 1rem 0;
+    display: block;
+    text-align: center;
+}
+
 .btn {
     padding: .5em 1em;
     border-radius: 4px;
@@ -81,4 +87,48 @@ label {
 .justify-center {
     display: flex;
     justify-content: center;
+}
+
+.form {
+    max-width: 800px;
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.form__title {
+    margin: 0 0 1rem 0;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.form-group--row {
+    flex-direction: row;
+}
+
+.form-group--row .form-group {
+    margin: 0;
+}
+
+.form-group__actions {
+    margin: .5rem 0;
+}
+
+.list-actions {
+    display: flex;
+    align-items: end;
+}
+
+.error-text {
+    color: var(--color-danger);
 }
