@@ -1,0 +1,27 @@
+.main-nav {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-bottom: 2rem;
+}
+
+.content {
+    flex-grow: 1;
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.brand-logo {
+    font-size: 1.4rem;
+}
+
+footer {
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: #fff;
+    margin-top: 2rem;
+}
