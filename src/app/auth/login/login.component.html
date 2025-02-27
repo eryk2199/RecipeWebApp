@@ -1,13 +1,19 @@
 <div class="justify-center">
-    <form class="form">
+    <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <h1>Login</h1>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="input--text" id="email" autocomplete="on"/>
+            <input type="email" class="input--text" id="email" autocomplete="on" [(ngModel)]="email" name="email" #emailRef="ngModel" required/>
+            <div class="error-text" [hidden]="emailRef.valid || emailRef.untouched">
+                    Email is required                
+            </div>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="input--text" id="password"/>
+            <input type="password" class="input--text" id="password" [(ngModel)]="password" name="password" #passwordRef="ngModel" required/>
+            <div class="error-text" [hidden]="passwordRef.valid || passwordRef.untouched">
+                Password is required                
+            </div>
         </div>
         <a routerLink="/register" class="link">Don't have an acount? Click here to register</a>
         <div class="form__actions">
