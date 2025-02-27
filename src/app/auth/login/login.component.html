@@ -1,6 +1,11 @@
 <div class="justify-center">
     <form class="form" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
         <h1>Login</h1>
+        @if(invalidCredentials) {
+            <div class="error-text">
+                Invalid credentials
+            </div>
+        }
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="input--text" id="email" autocomplete="on" [(ngModel)]="email" name="email" #emailRef="ngModel" required/>

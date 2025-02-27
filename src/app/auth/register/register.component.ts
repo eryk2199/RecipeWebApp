@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'auth-register',
@@ -12,6 +13,9 @@ export class RegisterComponent {
   email = '';
   password = '';
   confirmPassword = '';
+  error = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(registerForm: NgForm) {
     if(registerForm.invalid) {
@@ -22,10 +26,11 @@ export class RegisterComponent {
       registerForm.form.get('confirmPassword')?.setErrors({noMatch: true});
       return;
     }
-    console.log({
-      email: this.email,
-      password: this.password
+    this.authService.register(this.email, this.password).subscribe({
+      error: e => { this.error = true },
+      next: res => { this.router.navigate(["/login"])}
     })
+
   }
 
 }
